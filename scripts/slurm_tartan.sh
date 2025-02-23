@@ -10,17 +10,13 @@
 #SBATCH --output=/cluster/work/rsl/patelm/result/slurm_output/%x_%j.out
 #SBATCH --error=/cluster/work/rsl/patelm/result/slurm_output/%x_%j.err
 
-# Check if the correct number of arguments is provided
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <src_file> <outdir>"
-    exit 1
-fi
-
 source ~/.bashrc
 conda activate depth-pro
 
-srcdir=/cluster/work/rsl/patelm/imagenet-1k
-outdir=$2
+env_name=ModularNeighborhood
+
+srcdir=/cluster/scratch/patelm/$env_name
+outdir=/cluster/scratch/patelm/ml_depth_pro/$env_name
 
 cd /cluster/home/patelm/ws/rsl/ml-depth-pro
 
